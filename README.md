@@ -1,6 +1,8 @@
 # DocFinder
-Example project for search file base on file name or content
+Example project for search file base on file name or content.
 this version is only work for txt, pdf file format. 
+
+![Example Image](./demo.png)
 
 ## Setup
 Install Elasticsearch with Docker  
