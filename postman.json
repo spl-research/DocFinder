@@ -1,0 +1,78 @@
+{
+	"info": {
+		"_postman_id": "5c2ccb57-6c84-409a-a21d-2a0edecd22f8",
+		"name": "Doc Finder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25280137"
+	},
+	"item": [
+		{
+			"name": "Search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_source\": [\"title\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/documents/_search?q=စည့်ားမ ဥ့်ား၊စည့်ားကမ့်ားမ ာား",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"documents",
+						"_search"
+					],
+					"query": [
+						{
+							"key": "_source",
+							"value": "tit‌​le",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": "စည့်ားမ ဥ့်ား၊စည့်ားကမ့်ားမ ာား"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Index",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/documents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"documents"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "init": "node src/index.js",
-    "start": "node src/search.js",
+    "start": "node src/index.js",
     "create": "node src/create.js",
     "test": "node src/test.js"
   },

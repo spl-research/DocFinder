@@ -1,6 +1,7 @@
-const { Client } = require("@elastic/elasticsearch");
 const fs = require("fs");
 const path = require("path");
+const { Client } = require("@elastic/elasticsearch");
+const { getContent } = require("./utils");
 
 // Initialize Elasticsearch client
 const client = new Client({ node: "http://localhost:9200" });
@@ -33,7 +34,7 @@ async function indexDocuments() {
       const filePath = path.join(documentsDir, file);
       // only work for txt file
       // u need to parse file before create index if file type is pdf, doc, etc
-      const content = fs.readFileSync(filePath, "utf8");
+      const content = await getContent(filePath);
 
       console.log("content", content);
       // Index each document
