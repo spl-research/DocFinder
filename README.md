@@ -15,19 +15,10 @@ create file index using the following command
 npm start
 ```
 
-import postman.json file and search
+import postman.json file and search base on file content
 
 
 ## Elasticsearch curl
 ```
-curl -XGET 'http://localhost:9200/documents/_mapping'
-```
-
-```
-curl -XGET 'http://localhost:9200/documents/_search?q=team'
-```
-
-Search and only return title fields
-```
-curl -XGET 'http://localhost:9200/documents/_search?q=team&_source=tit‌​le'
+curl -XGET 'http://localhost:9200/documents/_search?q=*ကူဗလိုင်ခန်*'
 ```
