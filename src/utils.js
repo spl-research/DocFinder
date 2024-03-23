@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const PDFParser = require("pdf-parse");
+const { readPdfText } = require("pdf-text-reader");
 
 async function getContent(filePath) {
   const ext = path.extname(filePath);
@@ -24,14 +24,16 @@ function readTxt(filePath) {
 // Function to extract text from PDF file
 async function readPdf(filePath) {
   try {
-    // Read the PDF file
-    const dataBuffer = fs.readFileSync(filePath);
+    let text = await readPdfText({ url: filePath });
+    text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    // // Read the PDF file
+    // const dataBuffer = fs.readFileSync(filePath);
+    // // var text = Buffer.from(dataBuffer, "utf-8").toString();
+    // // Parse the PDF data
+    // const pdfData = await PDFParser(dataBuffer);
 
-    // Parse the PDF data
-    const pdfData = await PDFParser(dataBuffer);
-
-    // Extract text content from the parsed PDF data
-    const text = pdfData.text;
+    // // Extract text content from the parsed PDF data
+    // const text = pdfData.text;
 
     return text;
   } catch (error) {
@@ -40,8 +42,20 @@ async function readPdf(filePath) {
   }
 }
 
+function readFile(filePath) {
+  try {
+    const data = new Uint8Array(fs.readFileSync(filePath));
+    // const content = new TextDecoder().decode(data);
+    const content = Buffer.from(data.buffer).toString();
+    return content;
+  } catch (error) {
+    return null;
+  }
+}
+
 module.exports = {
   getContent,
   readTxt,
   readPdf,
+  readFile,
 };
