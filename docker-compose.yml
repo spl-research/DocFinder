@@ -1,10 +1,25 @@
-version: '3'
+version: "3"
 services:
   elasticsearch:
     image: elasticsearch:8.8.0
+    container_name: elasticsearch
     ports:
       - 9200:9200
       - 9300:9300
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
+  fs-crawler:
+    image: dadoonet/fscrawler:$FSCRAWLER_VERSION
+    container_name: fscrawler
+    restart: always
+    volumes:
+      - ${PWD}/documents/:/tmp/es:ro
+      - ${PWD}/config:/root/.fscrawler
+      - ${PWD}/logs:/usr/share/fscrawler/logs
+      - ${PWD}/external:/usr/share/fscrawler/external
+    ports:
+      - 8080:8080
+    command: fscrawler idx --restart --rest
+    depends_on:
+      - elasticsearch

@@ -4,16 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "create": "node src/create.js",
+    "start": "nodemon src/server.js",
     "test": "node src/test.js"
   },
-  "author": "",
+  "author": "San Pyae Lin",
   "license": "ISC",
   "dependencies": {
     "@elastic/elasticsearch": "^8.12.2",
-    "pdf-parse": "^1.1.1",
-    "pdf-text-reader": "^4.0.1",
-    "pdf.js-extract": "^0.2.1"
+    "body-parser": "^1.20.2",
+    "express": "^4.19.1",
+    "fs-crawler": "^0.0.4"
   }
 }
