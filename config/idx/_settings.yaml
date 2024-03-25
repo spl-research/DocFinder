@@ -5,9 +5,10 @@ fs:
   lang_detect: true
   continue_on_error: true
   ocr:
-    language: "eng"
+    language: "eng+mya"
     enabled: true
-    pdf_strategy: "ocr_and_text"
+    pdf_strategy: "auto"
+    # pdf_strategy: "ocr_and_text"
 elasticsearch:
   index: "documents"
   nodes:
@@ -19,3 +20,4 @@ elasticsearch:
   # ssl_verification: false
 rest :
   url: "http://fscrawler:8080"
+

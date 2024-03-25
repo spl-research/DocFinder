@@ -14,10 +14,15 @@ services:
     container_name: fscrawler
     restart: always
     volumes:
-      - ${PWD}/documents/:/tmp/es:ro
-      - ${PWD}/config:/root/.fscrawler
-      - ${PWD}/logs:/usr/share/fscrawler/logs
-      - ${PWD}/external:/usr/share/fscrawler/external
+      # linux
+      # - ${PWD}/documents/:/tmp/es:ro
+      # - ${PWD}/config:/root/.fscrawler
+      # - ${PWD}/logs:/usr/share/fscrawler/logs
+      # - ${PWD}/external:/usr/share/fscrawler/external
+      - ./documents/:/tmp/es:ro
+      - ./config:/root/.fscrawler
+      - ./logs:/usr/share/fscrawler/logs
+      - ./external:/usr/share/fscrawler/external
     ports:
       - 8080:8080
     command: fscrawler idx --restart --rest
