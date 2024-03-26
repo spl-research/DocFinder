@@ -7,7 +7,7 @@ fs:
   ocr:
     language: "eng+mya"
     enabled: true
-    pdf_strategy: "auto"
+    pdf_strategy: "no_ocr"
     # pdf_strategy: "ocr_and_text"
 elasticsearch:
   index: "documents"
